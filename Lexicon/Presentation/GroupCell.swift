@@ -9,14 +9,50 @@ import UIKit
 
 final class GroupCell: UICollectionViewCell {
     static let identity = "GroupCell"
+    let nameGroupLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        label.textColor = .white
+        label.text = "Глаголы"
+        
+        return label
+    }()
+    
+    let countLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        label.font = UIFont.systemFont(ofSize: 12, weight: .light)
+        label.textColor = .white
+        label.text = "2/24"
+        
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.backgroundColor = .mgOrange
         contentView.layer.cornerRadius = 16
+        contentView.addSubview(nameGroupLabel)
+        contentView.addSubview(countLabel)
+        addContstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+private extension GroupCell {
+    func addContstraints() {
+        NSLayoutConstraint.activate([
+            nameGroupLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            nameGroupLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            
+            countLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
+            countLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+        ])
     }
 }
