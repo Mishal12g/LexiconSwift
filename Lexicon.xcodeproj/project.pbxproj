@@ -14,6 +14,8 @@
 		87CC00E72B591A9700829301 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87CC00E52B591A9700829301 /* LaunchScreen.storyboard */; };
 		87CC00F02B59259000829301 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CC00EF2B59259000829301 /* TabBarViewController.swift */; };
 		87CC00F22B59281900829301 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CC00F12B59281900829301 /* SettingsViewController.swift */; };
+		87CC00F42B593FF100829301 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CC00F32B593FF100829301 /* GroupCell.swift */; };
+		87CC00F72B5958C200829301 /* UINavigationController + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CC00F62B5958C200829301 /* UINavigationController + extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		87CC00E82B591A9700829301 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87CC00EF2B59259000829301 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		87CC00F12B59281900829301 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		87CC00F32B593FF100829301 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		87CC00F62B5958C200829301 /* UINavigationController + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController + extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 		87CC00D92B591A9400829301 /* Lexicon */ = {
 			isa = PBXGroup;
 			children = (
+				87CC00F52B59589700829301 /* Helpers */,
 				87CC00EE2B59253F00829301 /* Presentation */,
 				87CC00DA2B591A9400829301 /* AppDelegate.swift */,
 				87CC00DC2B591A9400829301 /* SceneDelegate.swift */,
@@ -74,8 +79,17 @@
 				87CC00DE2B591A9400829301 /* GroupsViewController.swift */,
 				87CC00EF2B59259000829301 /* TabBarViewController.swift */,
 				87CC00F12B59281900829301 /* SettingsViewController.swift */,
+				87CC00F32B593FF100829301 /* GroupCell.swift */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		87CC00F52B59589700829301 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				87CC00F62B5958C200829301 /* UINavigationController + extension.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,9 +162,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87CC00F72B5958C200829301 /* UINavigationController + extension.swift in Sources */,
 				87CC00F02B59259000829301 /* TabBarViewController.swift in Sources */,
 				87CC00DF2B591A9400829301 /* GroupsViewController.swift in Sources */,
 				87CC00DB2B591A9400829301 /* AppDelegate.swift in Sources */,
+				87CC00F42B593FF100829301 /* GroupCell.swift in Sources */,
 				87CC00DD2B591A9400829301 /* SceneDelegate.swift in Sources */,
 				87CC00F22B59281900829301 /* SettingsViewController.swift in Sources */,
 			);

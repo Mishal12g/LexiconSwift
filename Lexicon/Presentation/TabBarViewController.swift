@@ -14,7 +14,7 @@ class TabBarViewController: UITabBarController {
         tabbarAppearance()
         let groupsVC = UINavigationController(rootViewController: GroupsViewController())
         groupsVC.tabBarItem = UITabBarItem(title: "Добавить", image: UIImage(systemName: "house.fill"), selectedImage: nil)
-        
+        groupsVC.setupBackground(color: .mgBlue)
         let settingsVC = SettingsViewController()
         settingsVC.tabBarItem = UITabBarItem(title: "Настройки", image: UIImage(systemName: "gearshape"), selectedImage: nil)
         
@@ -25,7 +25,8 @@ class TabBarViewController: UITabBarController {
 extension TabBarViewController {
     func tabbarAppearance() {
         tabBar.backgroundColor = .mgBlue
-        tabBar.unselectedItemTintColor = .white
-        tabBar.tintColor = .systemGray4
+        tabBar.barTintColor = .mgBlue
+        tabBar.unselectedItemTintColor = .systemGray4
+        tabBar.tintColor = .white
     }
 }
