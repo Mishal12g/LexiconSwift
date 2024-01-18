@@ -8,6 +8,9 @@
 import UIKit
 
 class GroupsViewController: UIViewController {
+    private var groups = [String]()
+    private var countGroups = 0
+    
     private let collectionView: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collection.translatesAutoresizingMaskIntoConstraints = false
@@ -25,16 +28,36 @@ class GroupsViewController: UIViewController {
         setupNavTop()
         addConstraints()
     }
+    
+    @objc func addDidTapButton() {
+        addGroup()
+    }
 }
 
 //MARK: - For method
 private extension GroupsViewController {
+    func addGroup() {
+        let emotions = ["🍇", "🍈", "🍉", "🍊", "🍋", "🍌", "🍍", "🥭", "🍎", "🍏", "🍐", "🍒", "🍓", "🫐", "🥝", "🍅", "🫒", "🥥", "🥑", "🍆", "🥔", "🥕", "🌽", "🌶️", "🫑", "🥒", "🥬", "🥦", "🧄", "🧅", "🍄"]
+        
+        if countGroups != emotions.count {
+            groups.append(emotions[countGroups])
+            collectionView.performBatchUpdates {
+                let indexPath = IndexPath(item: groups.count - 1, section: 0)
+                collectionView.insertItems(at: [indexPath])
+            }
+        }
+        
+        if countGroups != groups.count {
+            countGroups += 1
+        }
+    }
+    
     func setupNavTop() {
         self.navigationItem.title = "Группы"
         navigationController?.navigationBar.tintColor = .white
         
         guard let image = UIImage(systemName: "plus.circle.fill") else { return }
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIButton.systemButton(with: image, target: self, action: nil))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIButton.systemButton(with: image, target: self, action: #selector(addDidTapButton)))
     }
     
     func addSubviews() {
@@ -53,7 +76,7 @@ private extension GroupsViewController {
 
 extension GroupsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        100
+        groups.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -62,6 +85,8 @@ extension GroupsViewController: UICollectionViewDataSource {
         guard let groupCell = cell as? GroupCell else {
             return UICollectionViewCell()
         }
+        groupCell.nameGroupLabel.text = groups[indexPath.item]
+        
         
         return groupCell
     }

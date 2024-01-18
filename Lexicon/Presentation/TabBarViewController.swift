@@ -15,8 +15,9 @@ class TabBarViewController: UITabBarController {
         let groupsVC = UINavigationController(rootViewController: GroupsViewController())
         groupsVC.tabBarItem = UITabBarItem(title: "Добавить", image: UIImage(systemName: "house.fill"), selectedImage: nil)
         groupsVC.setupBackground(color: .mgBlue)
+        
         let settingsVC = SettingsViewController()
-        settingsVC.tabBarItem = UITabBarItem(title: "Настройки", image: UIImage(systemName: "gearshape"), selectedImage: nil)
+        settingsVC.tabBarItem = UITabBarItem(title: "Настройки", image: UIImage(systemName: "gearshape.fill"), selectedImage: nil)
         
         self.viewControllers = [groupsVC, settingsVC]
     }
