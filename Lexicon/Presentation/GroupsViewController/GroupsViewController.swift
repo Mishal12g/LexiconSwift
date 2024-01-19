@@ -8,8 +8,7 @@
 import UIKit
 
 class GroupsViewController: UIViewController {
-    private var groups = [String]()
-    private var countGroups = 0
+    private var groups = [Group]()
     
     private let collectionView: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -30,32 +29,17 @@ class GroupsViewController: UIViewController {
     }
     
     @objc func addDidTapButton() {
-        let vc = UINavigationController(rootViewController: GroupFormViewController())
+        let groupFormVC = GroupFormViewController()
+        groupFormVC.delegate = self
+        let vc = UINavigationController(rootViewController: groupFormVC )
         vc.setupBackground(backgroundColor: .mgBlue, tintColor: .white)
         vc.modalPresentationStyle = .fullScreen
         self.navigationController?.present(vc, animated: true)
-//        addGroup()
     }
 }
 
 //MARK: - For method
 private extension GroupsViewController {
-    func addGroup() {
-        let emotions = ["🍇", "🍈", "🍉", "🍊", "🍋", "🍌", "🍍", "🥭", "🍎", "🍏", "🍐", "🍒", "🍓", "🫐", "🥝", "🍅", "🫒", "🥥", "🥑", "🍆", "🥔", "🥕", "🌽", "🌶️", "🫑", "🥒", "🥬", "🥦", "🧄", "🧅", "🍄"]
-        
-        if countGroups != emotions.count {
-            groups.append(emotions[countGroups])
-            collectionView.performBatchUpdates {
-                let indexPath = IndexPath(item: groups.count - 1, section: 0)
-                collectionView.insertItems(at: [indexPath])
-            }
-        }
-        
-        if countGroups != groups.count {
-            countGroups += 1
-        }
-    }
-    
     func setupNavTop() {
         self.navigationItem.title = "Группы"
         navigationController?.navigationBar.tintColor = .white
@@ -89,8 +73,9 @@ extension GroupsViewController: UICollectionViewDataSource {
         guard let groupCell = cell as? GroupCell else {
             return UICollectionViewCell()
         }
-        groupCell.nameGroupLabel.text = groups[indexPath.item]
-        
+        groupCell.nameGroupLabel.text = groups[indexPath.item].name
+        groupCell.backgroundColor = groups[indexPath.item].color
+        groupCell.layer.cornerRadius = 16
         
         return groupCell
     }
@@ -110,5 +95,18 @@ extension GroupsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 11, left: 11, bottom: 11, right: 11)
+    }
+}
+
+extension GroupsViewController: GroupFormViewControllerDelegate {
+    func createGroup(name: String, color: UIColor) {
+        guard !name.isEmpty else { return }
+        let newGroup = Group(name: name, color: color)
+        groups.append(newGroup)
+        collectionView.performBatchUpdates {
+            let indexPath = IndexPath(item: groups.count - 1, section: 0)
+            collectionView.insertItems(at: [indexPath])
+        }
+        self.dismiss(animated: true)
     }
 }

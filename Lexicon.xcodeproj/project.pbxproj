@@ -11,6 +11,7 @@
 		876EB3012B5A6E1E007EE48D /* TextField + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876EB3002B5A6E1E007EE48D /* TextField + extension.swift */; };
 		876EB3032B5A75A1007EE48D /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876EB3022B5A75A1007EE48D /* ColorCell.swift */; };
 		876EB3062B5A825B007EE48D /* GeometricColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876EB3052B5A825B007EE48D /* GeometricColorCell.swift */; };
+		876EB3092B5AA39F007EE48D /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876EB3082B5AA39F007EE48D /* Group.swift */; };
 		87CC00DB2B591A9400829301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CC00DA2B591A9400829301 /* AppDelegate.swift */; };
 		87CC00DD2B591A9400829301 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CC00DC2B591A9400829301 /* SceneDelegate.swift */; };
 		87CC00DF2B591A9400829301 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CC00DE2B591A9400829301 /* GroupsViewController.swift */; };
@@ -27,6 +28,7 @@
 		876EB3002B5A6E1E007EE48D /* TextField + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField + extension.swift"; sourceTree = "<group>"; };
 		876EB3022B5A75A1007EE48D /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		876EB3052B5A825B007EE48D /* GeometricColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometricColorCell.swift; sourceTree = "<group>"; };
+		876EB3082B5AA39F007EE48D /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		87CC00D72B591A9400829301 /* Lexicon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lexicon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87CC00DA2B591A9400829301 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87CC00DC2B591A9400829301 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,14 @@
 			path = ColorCell;
 			sourceTree = "<group>";
 		};
+		876EB3072B5AA38D007EE48D /* models */ = {
+			isa = PBXGroup;
+			children = (
+				876EB3082B5AA39F007EE48D /* Group.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
 		87CC00CE2B591A9400829301 = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +133,7 @@
 		87CC00D92B591A9400829301 /* Lexicon */ = {
 			isa = PBXGroup;
 			children = (
+				876EB3072B5AA38D007EE48D /* models */,
 				87CC00EE2B59253F00829301 /* Presentation */,
 				87CC00F52B59589700829301 /* Helpers */,
 				876EB2FC2B5A589F007EE48D /* Resources */,
@@ -225,6 +236,7 @@
 				876EB3012B5A6E1E007EE48D /* TextField + extension.swift in Sources */,
 				876EB2FF2B5A5DF7007EE48D /* GroupFormViewController.swift in Sources */,
 				87CC00F72B5958C200829301 /* UINavigationController + extension.swift in Sources */,
+				876EB3092B5AA39F007EE48D /* Group.swift in Sources */,
 				876EB3062B5A825B007EE48D /* GeometricColorCell.swift in Sources */,
 				876EB3032B5A75A1007EE48D /* ColorCell.swift in Sources */,
 				87CC00F02B59259000829301 /* TabBarViewController.swift in Sources */,

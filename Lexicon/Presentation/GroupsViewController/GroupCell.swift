@@ -26,14 +26,13 @@ final class GroupCell: UICollectionViewCell {
         
         label.font = UIFont.systemFont(ofSize: 12, weight: .light)
         label.textColor = .white
-        label.text = "2/24"
+        label.text = "0/0"
         
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .mgOrange
         contentView.layer.cornerRadius = 16
         contentView.addSubview(nameGroupLabel)
         contentView.addSubview(countLabel)
