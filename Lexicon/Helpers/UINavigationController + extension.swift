@@ -8,12 +8,12 @@
 import UIKit
 
 extension UINavigationController {
-    func setupBackground(color: UIColor) {
+    func setupBackground(backgroundColor: UIColor, tintColor: UIColor) {
         let appearence = UINavigationBarAppearance()
         appearence.configureWithOpaqueBackground()
-        appearence.backgroundColor = color
+        appearence.backgroundColor = backgroundColor
         appearence.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        
+        navigationBar.tintColor = tintColor
         navigationBar.standardAppearance = appearence
         navigationBar.scrollEdgeAppearance = appearence
     }

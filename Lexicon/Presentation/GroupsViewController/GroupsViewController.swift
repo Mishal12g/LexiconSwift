@@ -30,7 +30,11 @@ class GroupsViewController: UIViewController {
     }
     
     @objc func addDidTapButton() {
-        addGroup()
+        let vc = UINavigationController(rootViewController: GroupFormViewController())
+        vc.setupBackground(backgroundColor: .mgBlue, tintColor: .white)
+        vc.modalPresentationStyle = .fullScreen
+        self.navigationController?.present(vc, animated: true)
+//        addGroup()
     }
 }
 

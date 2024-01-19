@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		876EB2FF2B5A5DF7007EE48D /* GroupFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876EB2FE2B5A5DF7007EE48D /* GroupFormViewController.swift */; };
+		876EB3012B5A6E1E007EE48D /* TextField + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876EB3002B5A6E1E007EE48D /* TextField + extension.swift */; };
 		87CC00DB2B591A9400829301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CC00DA2B591A9400829301 /* AppDelegate.swift */; };
 		87CC00DD2B591A9400829301 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CC00DC2B591A9400829301 /* SceneDelegate.swift */; };
 		87CC00DF2B591A9400829301 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CC00DE2B591A9400829301 /* GroupsViewController.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		876EB2FE2B5A5DF7007EE48D /* GroupFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFormViewController.swift; sourceTree = "<group>"; };
+		876EB3002B5A6E1E007EE48D /* TextField + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField + extension.swift"; sourceTree = "<group>"; };
 		87CC00D72B591A9400829301 /* Lexicon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lexicon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87CC00DA2B591A9400829301 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87CC00DC2B591A9400829301 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +47,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		876EB2F92B5A5838007EE48D /* TabBarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				87CC00EF2B59259000829301 /* TabBarViewController.swift */,
+			);
+			path = TabBarViewController;
+			sourceTree = "<group>";
+		};
+		876EB2FA2B5A585C007EE48D /* GroupsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				87CC00DE2B591A9400829301 /* GroupsViewController.swift */,
+				87CC00F32B593FF100829301 /* GroupCell.swift */,
+			);
+			path = GroupsViewController;
+			sourceTree = "<group>";
+		};
+		876EB2FB2B5A5871007EE48D /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				87CC00F12B59281900829301 /* SettingsViewController.swift */,
+			);
+			path = SettingsViewController;
+			sourceTree = "<group>";
+		};
+		876EB2FC2B5A589F007EE48D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				87CC00E32B591A9700829301 /* Assets.xcassets */,
+				87CC00E52B591A9700829301 /* LaunchScreen.storyboard */,
+				87CC00E82B591A9700829301 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		876EB2FD2B5A5DC8007EE48D /* GroupFormViewController */ = {
+			isa = PBXGroup;
+			children = (
+				876EB2FE2B5A5DF7007EE48D /* GroupFormViewController.swift */,
+			);
+			path = GroupFormViewController;
+			sourceTree = "<group>";
+		};
 		87CC00CE2B591A9400829301 = {
 			isa = PBXGroup;
 			children = (
@@ -62,13 +109,11 @@
 		87CC00D92B591A9400829301 /* Lexicon */ = {
 			isa = PBXGroup;
 			children = (
-				87CC00F52B59589700829301 /* Helpers */,
 				87CC00EE2B59253F00829301 /* Presentation */,
+				87CC00F52B59589700829301 /* Helpers */,
+				876EB2FC2B5A589F007EE48D /* Resources */,
 				87CC00DA2B591A9400829301 /* AppDelegate.swift */,
 				87CC00DC2B591A9400829301 /* SceneDelegate.swift */,
-				87CC00E32B591A9700829301 /* Assets.xcassets */,
-				87CC00E52B591A9700829301 /* LaunchScreen.storyboard */,
-				87CC00E82B591A9700829301 /* Info.plist */,
 			);
 			path = Lexicon;
 			sourceTree = "<group>";
@@ -76,10 +121,10 @@
 		87CC00EE2B59253F00829301 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				87CC00DE2B591A9400829301 /* GroupsViewController.swift */,
-				87CC00EF2B59259000829301 /* TabBarViewController.swift */,
-				87CC00F12B59281900829301 /* SettingsViewController.swift */,
-				87CC00F32B593FF100829301 /* GroupCell.swift */,
+				876EB2FD2B5A5DC8007EE48D /* GroupFormViewController */,
+				876EB2FA2B5A585C007EE48D /* GroupsViewController */,
+				876EB2FB2B5A5871007EE48D /* SettingsViewController */,
+				876EB2F92B5A5838007EE48D /* TabBarViewController */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -88,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				87CC00F62B5958C200829301 /* UINavigationController + extension.swift */,
+				876EB3002B5A6E1E007EE48D /* TextField + extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -162,6 +208,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				876EB3012B5A6E1E007EE48D /* TextField + extension.swift in Sources */,
+				876EB2FF2B5A5DF7007EE48D /* GroupFormViewController.swift in Sources */,
 				87CC00F72B5958C200829301 /* UINavigationController + extension.swift in Sources */,
 				87CC00F02B59259000829301 /* TabBarViewController.swift in Sources */,
 				87CC00DF2B591A9400829301 /* GroupsViewController.swift in Sources */,
@@ -314,7 +362,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AMLNY4CPQ6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Lexicon/Info.plist;
+				INFOPLIST_FILE = Lexicon/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -344,7 +392,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AMLNY4CPQ6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Lexicon/Info.plist;
+				INFOPLIST_FILE = Lexicon/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
