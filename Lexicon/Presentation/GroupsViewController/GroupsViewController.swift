@@ -69,7 +69,12 @@ private extension GroupsViewController {
     }
     
     func addWordInGroup() {
-        print("addWord")
+        let groupFormVC = WordFormViewController()
+        
+        let vc = UINavigationController(rootViewController: groupFormVC )
+        vc.setupBackground(backgroundColor: .mgBlue, tintColor: .white)
+        vc.modalPresentationStyle = .fullScreen
+        self.navigationController?.present(vc, animated: true)
     }
     
     func addGroup() {
@@ -160,7 +165,7 @@ extension GroupsViewController: UICollectionViewDelegateFlowLayout {
 extension GroupsViewController: GroupFormViewControllerDelegate {
     func createGroup(name: String, color: UIColor) {
         guard !name.isEmpty else { return }
-        let newGroup = Group(name: name, color: color)
+        let newGroup = Group(name: name, color: color, words: [])
         groups.append(newGroup)
         collectionView.performBatchUpdates {
             let indexPath = IndexPath(item: groups.count - 1, section: 0)
