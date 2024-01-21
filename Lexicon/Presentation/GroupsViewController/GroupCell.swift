@@ -13,9 +13,9 @@ final class GroupCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 25, weight: .medium)
         label.textColor = .white
-        label.text = "Глаголы"
+        label.numberOfLines = 2
         
         return label
     }()
@@ -49,6 +49,8 @@ private extension GroupCell {
         NSLayoutConstraint.activate([
             nameGroupLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             nameGroupLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            nameGroupLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            nameGroupLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             
             countLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
             countLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),

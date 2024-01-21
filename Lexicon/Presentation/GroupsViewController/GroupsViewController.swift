@@ -10,6 +10,23 @@ import UIKit
 class GroupsViewController: UIViewController {
     private var groups = [Group]()
     
+    private let errorLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Список групп пока пустой =)"
+        label.textAlignment = .center
+        
+        return label
+    }()
+    
+    private let errorImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "error")
+        
+        return imageView
+    }()
+    
     private let collectionView: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collection.translatesAutoresizingMaskIntoConstraints = false
@@ -26,6 +43,7 @@ class GroupsViewController: UIViewController {
         addSubviews()
         setupNavTop()
         addConstraints()
+        hideErrorViews()
     }
     
     @objc func addDidTapButton() {
@@ -40,6 +58,12 @@ class GroupsViewController: UIViewController {
 
 //MARK: - For method
 private extension GroupsViewController {
+    func hideErrorViews() {
+        guard !groups.isEmpty else { return }
+        errorLabel.isHidden = true
+        errorImageView.isHidden = true
+    }
+    
     func setupNavTop() {
         self.navigationItem.title = "Группы"
         navigationController?.navigationBar.tintColor = .white
@@ -50,6 +74,8 @@ private extension GroupsViewController {
     
     func addSubviews() {
         view.addSubview(collectionView)
+        view.addSubview(errorImageView)
+        view.addSubview(errorLabel)
     }
     
     func addConstraints(){
@@ -58,6 +84,15 @@ private extension GroupsViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            
+            errorImageView.heightAnchor.constraint(equalToConstant: 100),
+            errorImageView.widthAnchor.constraint(equalToConstant: 100),
+            errorImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            errorImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            errorLabel.topAnchor.constraint(equalTo: errorImageView.bottomAnchor, constant: 10),
+            errorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            errorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
         ])
     }
 }
@@ -107,6 +142,8 @@ extension GroupsViewController: GroupFormViewControllerDelegate {
             let indexPath = IndexPath(item: groups.count - 1, section: 0)
             collectionView.insertItems(at: [indexPath])
         }
+        
+        hideErrorViews()
         self.dismiss(animated: true)
     }
 }
