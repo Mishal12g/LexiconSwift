@@ -13,9 +13,9 @@ final class GroupCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 25, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         label.textColor = .white
-        label.numberOfLines = 2
+        label.numberOfLines = 1
         
         return label
     }()

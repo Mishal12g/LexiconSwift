@@ -45,8 +45,34 @@ class GroupsViewController: UIViewController {
         addConstraints()
         hideErrorViews()
     }
+}
+
+//MARK: - For method
+private extension GroupsViewController {
+    @objc func addDidTapButton(_ sender: UIButton) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        alertController.addAction(UIAlertAction(title: "Добавить группу", style: .default, handler: { action in
+            self.addGroup()
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "Добавить слово", style: .default, handler: { action in
+            self.addWordInGroup()
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+        
+        alertController.popoverPresentationController?.sourceView = sender
+        alertController.popoverPresentationController?.sourceRect = sender.bounds
+        
+        present(alertController, animated: true, completion: nil)
+    }
     
-    @objc func addDidTapButton() {
+    func addWordInGroup() {
+        print("addWord")
+    }
+    
+    func addGroup() {
         let groupFormVC = GroupFormViewController()
         groupFormVC.delegate = self
         let vc = UINavigationController(rootViewController: groupFormVC )
@@ -54,10 +80,7 @@ class GroupsViewController: UIViewController {
         vc.modalPresentationStyle = .fullScreen
         self.navigationController?.present(vc, animated: true)
     }
-}
-
-//MARK: - For method
-private extension GroupsViewController {
+    
     func hideErrorViews() {
         guard !groups.isEmpty else { return }
         errorLabel.isHidden = true
@@ -69,7 +92,8 @@ private extension GroupsViewController {
         navigationController?.navigationBar.tintColor = .white
         
         guard let image = UIImage(systemName: "plus.circle.fill") else { return }
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIButton.systemButton(with: image, target: self, action: #selector(addDidTapButton)))
+        let button = UIButton.systemButton(with: image, target: self, action: #selector(addDidTapButton(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
     
     func addSubviews() {
