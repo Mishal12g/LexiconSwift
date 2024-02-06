@@ -18,10 +18,21 @@ class GroupFormViewController: UIViewController {
     var delegate: GroupFormViewControllerDelegate?
     private var color: UIColor?
     
-    private let collectionView: UICollectionView = {
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.keyboardDismissMode = .onDrag
+        
+        return scrollView
+    }()
+    
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.dataSource = self
+        collection.delegate = self
+        collection.register(ColorCell.self, forCellWithReuseIdentifier: ColorCell.identity)
+        collection.allowsMultipleSelection = false
         
         return collection
     }()
@@ -48,14 +59,10 @@ class GroupFormViewController: UIViewController {
         return label
     }()
     
-    private let nameGroupTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = .systemGray4
-        textField.font = UIFont.systemFont(ofSize: 24)
-        textField.layer.cornerRadius = 16
-        textField.addPadding(.both(10))
+    private lazy var nameGroupTextField: TextField = {
+        let textField = TextField()
         textField.becomeFirstResponder()
+        textField.delegate = self
         
         return textField
     }()
@@ -63,13 +70,8 @@ class GroupFormViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        nameGroupTextField.delegate = self
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(ColorCell.self, forCellWithReuseIdentifier: ColorCell.identity)
-        collectionView.allowsMultipleSelection = false
+        
         setupNavTop()
-        addSubviews()
         addConstraints()
     }
 }
@@ -93,38 +95,6 @@ private extension GroupFormViewController {
     
     @objc func actionBack() {
         self.navigationController?.dismiss(animated: true)
-    }
-    
-    func addSubviews() {
-        view.addSubview(nameGroupTextField)
-        view.addSubview(nameLabel)
-        view.addSubview(doneButton)
-        view.addSubview(collectionView)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        tapGesture.cancelsTouchesInView = false
-        view.addGestureRecognizer(tapGesture)
-    }
-    
-    func addConstraints() {
-        NSLayoutConstraint.activate([
-            nameGroupTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 55),
-            nameGroupTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 19),
-            nameGroupTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -19),
-            nameGroupTextField.heightAnchor.constraint(equalToConstant: 49),
-            
-            nameLabel.bottomAnchor.constraint(equalTo: nameGroupTextField.topAnchor, constant: -5),
-            nameLabel.leadingAnchor.constraint(equalTo: nameGroupTextField.leadingAnchor),
-            
-            doneButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
-            doneButton.leadingAnchor.constraint(equalTo: nameGroupTextField.leadingAnchor),
-            doneButton.trailingAnchor.constraint(equalTo: nameGroupTextField.trailingAnchor),
-            doneButton.heightAnchor.constraint(equalToConstant: 60),
-            
-            collectionView.topAnchor.constraint(equalTo: nameGroupTextField.bottomAnchor, constant: 15),
-            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 200)
-        ])
     }
 }
 
@@ -180,5 +150,49 @@ extension GroupFormViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+private extension GroupFormViewController {
+    func addConstraints() {
+        view.addSubview(scrollView)
+        [nameGroupTextField,
+         nameLabel,
+         doneButton,
+         collectionView].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            scrollView.addSubview($0)
+        }
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tapGesture)
+        
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            
+            nameLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 15),
+            nameLabel.bottomAnchor.constraint(equalTo: nameGroupTextField.topAnchor, constant: -5),
+            nameLabel.leadingAnchor.constraint(equalTo: nameGroupTextField.leadingAnchor),
+            
+            nameGroupTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 15),
+            nameGroupTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 19),
+            nameGroupTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -19),
+            nameGroupTextField.heightAnchor.constraint(equalToConstant: 49),
+            
+            collectionView.topAnchor.constraint(equalTo: nameGroupTextField.bottomAnchor, constant: 15),
+            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            collectionView.heightAnchor.constraint(equalToConstant: 250),
+            
+            doneButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
+            doneButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            doneButton.leadingAnchor.constraint(equalTo: nameGroupTextField.leadingAnchor),
+            doneButton.trailingAnchor.constraint(equalTo: nameGroupTextField.trailingAnchor),
+            doneButton.heightAnchor.constraint(equalToConstant: 60),
+        ])
     }
 }
