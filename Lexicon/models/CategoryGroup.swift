@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct CategoryGroup {
+    let title: String
+    let groups: [Group]
+}

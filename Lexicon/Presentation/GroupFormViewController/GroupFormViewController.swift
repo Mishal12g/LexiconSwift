@@ -12,10 +12,9 @@ protocol GroupFormViewControllerDelegate {
 }
 
 class GroupFormViewController: UIViewController {
-    private let colors: [UIColor] = [._1, ._2, ._3, ._4, ._5, ._6, ._7, ._8, ._9, ._10, ._11, ._12, ._13, ._14, ._15, ._16, ._17, ._18]
-    
-    private let params = GeometricColorCell(countCell: 6, leftInset: 19.0, rightInset: 19.0, spasingInset: 5.0)
     var delegate: GroupFormViewControllerDelegate?
+    
+    private let dataSource = ColorsColletcionViewDataSource()
     private var color: UIColor?
     
     private let scrollView: UIScrollView = {
@@ -29,8 +28,9 @@ class GroupFormViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collection.dataSource = self
-        collection.delegate = self
+        dataSource.delegate = self
+        collection.dataSource = dataSource
+        collection.delegate = dataSource
         collection.register(ColorCell.self, forCellWithReuseIdentifier: ColorCell.identity)
         collection.allowsMultipleSelection = false
         
@@ -59,10 +59,20 @@ class GroupFormViewController: UIViewController {
         return label
     }()
     
+    private let colorLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.text = "Цвет"
+        
+        return label
+    }()
+    
     private lazy var nameGroupTextField: TextField = {
         let textField = TextField()
         textField.becomeFirstResponder()
         textField.delegate = self
+        textField.addTarget(self, action: #selector(valueChangeTextField), for: .editingChanged)
         
         return textField
     }()
@@ -70,7 +80,7 @@ class GroupFormViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+        isEnabledButton()
         setupNavTop()
         addConstraints()
     }
@@ -82,6 +92,15 @@ private extension GroupFormViewController {
         let button = UIButton.systemButton(with: UIImage(systemName: "chevron.left")!, target: self, action: #selector(actionBack))
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
         navigationItem.title = "Создать Группу"
+    }
+    
+    func isEnabledButton() {
+        guard let text = nameGroupTextField.text else { return }
+        doneButton.isEnabled = color != nil && !text.isEmpty
+    }
+    
+    @objc func valueChangeTextField() {
+        isEnabledButton()
     }
     
     @objc func didTapDoneButton() {
@@ -98,51 +117,10 @@ private extension GroupFormViewController {
     }
 }
 
-//MARK: - CollectionViewDataSource
-extension GroupFormViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        colors.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColorCell.identity, for: indexPath)
-        
-        guard let colorCell = cell as? ColorCell else {
-            return UICollectionViewCell()
-        }
-        colorCell.layer.cornerRadius = 16
-        colorCell.backgroundColor = colors[indexPath.item]
-        
-        return colorCell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ColorCell else { return }
-        color = colors[indexPath.row]
-        cell.layer.borderColor = UIColor.white.cgColor
-        cell.layer.borderWidth = 3
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ColorCell else { return }
-        cell.layer.borderWidth = 0
-    }
-}
-
-//MARK: - CollectionViewDelegate
-extension GroupFormViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth = (collectionView.frame.width - params.paddingWidth) / CGFloat(params.countCell)
-        let cellHeight = cellWidth
-        return CGSize(width: cellWidth, height: cellHeight)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: params.leftInset, bottom: 0, right: params.rightInset)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return params.spasingInset
+extension GroupFormViewController: ColorsColletcionViewDelegate {
+    func selectedColor(color: UIColor) {
+        self.color = color
+        isEnabledButton()
     }
 }
 
@@ -157,6 +135,7 @@ private extension GroupFormViewController {
     func addConstraints() {
         view.addSubview(scrollView)
         [nameGroupTextField,
+         colorLabel,
          nameLabel,
          doneButton,
          collectionView].forEach {
@@ -183,10 +162,13 @@ private extension GroupFormViewController {
             nameGroupTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -19),
             nameGroupTextField.heightAnchor.constraint(equalToConstant: 49),
             
-            collectionView.topAnchor.constraint(equalTo: nameGroupTextField.bottomAnchor, constant: 15),
+            colorLabel.topAnchor.constraint(equalTo: nameGroupTextField.bottomAnchor, constant: 15),
+            colorLabel.leadingAnchor.constraint(equalTo: nameGroupTextField.leadingAnchor),
+            
+            collectionView.topAnchor.constraint(equalTo: colorLabel.bottomAnchor, constant: 15),
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 250),
+            collectionView.heightAnchor.constraint(equalToConstant: 200),
             
             doneButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
             doneButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),

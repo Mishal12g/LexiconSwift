@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8738754C2B72758400C5CCF5 /* CategoryGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738754B2B72758400C5CCF5 /* CategoryGroup.swift */; };
+		8740533C2B7E357F007C2DC2 /* ColorsColletcionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8740533B2B7E357F007C2DC2 /* ColorsColletcionViewDataSource.swift */; };
 		875B9BF52B5D4FE600DAB15B /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875B9BF42B5D4FE600DAB15B /* TextField.swift */; };
 		876EB2FF2B5A5DF7007EE48D /* GroupFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876EB2FE2B5A5DF7007EE48D /* GroupFormViewController.swift */; };
 		876EB3012B5A6E1E007EE48D /* TextField + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876EB3002B5A6E1E007EE48D /* TextField + extension.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		8738754B2B72758400C5CCF5 /* CategoryGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryGroup.swift; sourceTree = "<group>"; };
+		8740533B2B7E357F007C2DC2 /* ColorsColletcionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsColletcionViewDataSource.swift; sourceTree = "<group>"; };
 		875B9BF42B5D4FE600DAB15B /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		876EB2FE2B5A5DF7007EE48D /* GroupFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFormViewController.swift; sourceTree = "<group>"; };
 		876EB3002B5A6E1E007EE48D /* TextField + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField + extension.swift"; sourceTree = "<group>"; };
@@ -78,6 +80,13 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		8738754F2B7278A000C5CCF5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		876EB2F92B5A5838007EE48D /* TabBarViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				876EB2FE2B5A5DF7007EE48D /* GroupFormViewController.swift */,
+				8740533B2B7E357F007C2DC2 /* ColorsColletcionViewDataSource.swift */,
 			);
 			path = GroupFormViewController;
 			sourceTree = "<group>";
@@ -156,6 +166,7 @@
 		87CC00D92B591A9400829301 /* Lexicon */ = {
 			isa = PBXGroup;
 			children = (
+				8738754F2B7278A000C5CCF5 /* Services */,
 				876EB3072B5AA38D007EE48D /* models */,
 				87CC00EE2B59253F00829301 /* Presentation */,
 				87CC00F52B59589700829301 /* Helpers */,
@@ -261,6 +272,7 @@
 				876EB3012B5A6E1E007EE48D /* TextField + extension.swift in Sources */,
 				876EB2FF2B5A5DF7007EE48D /* GroupFormViewController.swift in Sources */,
 				87CC00F72B5958C200829301 /* UINavigationController + extension.swift in Sources */,
+				8740533C2B7E357F007C2DC2 /* ColorsColletcionViewDataSource.swift in Sources */,
 				875B9BF52B5D4FE600DAB15B /* TextField.swift in Sources */,
 				876EB3092B5AA39F007EE48D /* Group.swift in Sources */,
 				876EB3062B5A825B007EE48D /* GeometricColorCell.swift in Sources */,
