@@ -37,13 +37,8 @@ class GroupFormViewController: UIViewController {
         return collection
     }()
     
-    private lazy var doneButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 16
-        button.backgroundColor = .mgBlue
-        button.tintColor = .white
-        button.titleLabel?.font = .systemFont(ofSize: 25)
+    private lazy var doneButton: Button = {
+        let button = Button()
         button.setTitle("Готово", for: .normal)
         button.addTarget(self, action: #selector(didTapDoneButton), for: .touchUpInside)
         

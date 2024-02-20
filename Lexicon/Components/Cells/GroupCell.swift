@@ -9,6 +9,10 @@ import UIKit
 
 final class GroupCell: UICollectionViewCell {
     static let identity = "GroupCell"
+    
+    private var completedCount: Int = 0
+    private var countCards: Int = 0
+    
     let nameGroupLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -20,13 +24,13 @@ final class GroupCell: UICollectionViewCell {
         return label
     }()
     
-    let countLabel: UILabel = {
+    lazy var countLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         
         label.font = UIFont.systemFont(ofSize: 12, weight: .light)
         label.textColor = .white
-        label.text = "0/0"
+        label.text = "\(completedCount)/\(countCards)"
         
         return label
     }()
@@ -41,6 +45,14 @@ final class GroupCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configCell(group: Group) {
+        nameGroupLabel.text = group.name
+        countCards = group.cards.count
+        countLabel.text = "\(completedCount)/\(countCards)"
+        backgroundColor = group.color
+        layer.cornerRadius = 16
     }
 }
 

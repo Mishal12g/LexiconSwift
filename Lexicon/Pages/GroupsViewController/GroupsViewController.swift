@@ -8,8 +8,13 @@
 import UIKit
 
 class GroupsViewController: UIViewController {
-    private var groups = [Group]()
+    private let groupsStore = GroupsStore.shared
+    private var groups: [Group] {
+        groupsStore.groups
+    }
     
+    private var notification: NSObjectProtocol?
+    //TODO: - понять почему при обновлении группы, не обновляется лейбл в ячейке, хотя сама коллекция обновляется.
     private let errorLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -44,6 +49,13 @@ class GroupsViewController: UIViewController {
         setupNavTop()
         addConstraints()
         hideErrorViews()
+        
+        notification = NotificationCenter.default.addObserver(
+            forName: GroupsStore.groupDidChangeNotification,
+            object: nil,
+            queue: .main) {_ in 
+                self.collectionView.reloadData()
+            }
     }
 }
 
@@ -87,9 +99,8 @@ private extension GroupsViewController {
     }
     
     func hideErrorViews() {
-        guard !groups.isEmpty else { return }
-        errorLabel.isHidden = true
-        errorImageView.isHidden = true
+        errorLabel.isHidden = !groups.isEmpty
+        errorImageView.isHidden = !groups.isEmpty
     }
     
     func setupNavTop() {
@@ -137,9 +148,10 @@ extension GroupsViewController: UICollectionViewDataSource {
         guard let groupCell = cell as? GroupCell else {
             return UICollectionViewCell()
         }
-        groupCell.nameGroupLabel.text = groups[indexPath.item].name
-        groupCell.backgroundColor = groups[indexPath.item].color
-        groupCell.layer.cornerRadius = 16
+   
+        let group = groups[indexPath.item]
+        
+        groupCell.configCell(group: group)
         
         return groupCell
     }
@@ -165,12 +177,9 @@ extension GroupsViewController: UICollectionViewDelegateFlowLayout {
 extension GroupsViewController: GroupFormViewControllerDelegate {
     func createGroup(name: String, color: UIColor) {
         guard !name.isEmpty else { return }
-        let newGroup = Group(name: name, color: color, words: [])
-        groups.append(newGroup)
-        collectionView.performBatchUpdates {
-            let indexPath = IndexPath(item: groups.count - 1, section: 0)
-            collectionView.insertItems(at: [indexPath])
-        }
+        let newGroup = Group(name: name, color: color, cards: [])
+        groupsStore.addGroup(group: newGroup)
+        collectionView.reloadData()
         
         hideErrorViews()
         self.dismiss(animated: true)

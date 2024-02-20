@@ -10,5 +10,5 @@ import UIKit
 struct Group {
     let name: String
     let color: UIColor
-    let words: [String]
+    let cards: [Card]
 }

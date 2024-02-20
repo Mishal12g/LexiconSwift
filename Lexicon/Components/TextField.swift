@@ -8,14 +8,16 @@
 import UIKit
 
 final class TextField: UITextField {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    
+    init(placeholder: String? = nil) {
+        super.init(frame: .zero)
+
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = .systemGray4
         self.font = UIFont.systemFont(ofSize: 24)
         self.layer.cornerRadius = 16
         self.addPadding(.both(10))
-        
+        self.placeholder = placeholder
     }
     
     required init?(coder: NSCoder) {

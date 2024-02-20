@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8738754C2B72758400C5CCF5 /* CategoryGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738754B2B72758400C5CCF5 /* CategoryGroup.swift */; };
 		8740533C2B7E357F007C2DC2 /* ColorsColletcionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8740533B2B7E357F007C2DC2 /* ColorsColletcionViewDataSource.swift */; };
+		874053402B7E4731007C2DC2 /* GroupsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8740533F2B7E4731007C2DC2 /* GroupsListViewController.swift */; };
+		874053432B7E47D4007C2DC2 /* GroupListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874053422B7E47D4007C2DC2 /* GroupListCell.swift */; };
+		874053452B7E4863007C2DC2 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874053442B7E4863007C2DC2 /* Button.swift */; };
+		874053472B7E50A3007C2DC2 /* GroupsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874053462B7E50A3007C2DC2 /* GroupsStore.swift */; };
 		875B9BF52B5D4FE600DAB15B /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875B9BF42B5D4FE600DAB15B /* TextField.swift */; };
 		876EB2FF2B5A5DF7007EE48D /* GroupFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876EB2FE2B5A5DF7007EE48D /* GroupFormViewController.swift */; };
 		876EB3012B5A6E1E007EE48D /* TextField + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876EB3002B5A6E1E007EE48D /* TextField + extension.swift */; };
@@ -25,11 +28,15 @@
 		87CC00F22B59281900829301 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CC00F12B59281900829301 /* SettingsViewController.swift */; };
 		87CC00F42B593FF100829301 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CC00F32B593FF100829301 /* GroupCell.swift */; };
 		87CC00F72B5958C200829301 /* UINavigationController + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CC00F62B5958C200829301 /* UINavigationController + extension.swift */; };
+		87FE4B522B84E3FB001B8352 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FE4B512B84E3FB001B8352 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8738754B2B72758400C5CCF5 /* CategoryGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryGroup.swift; sourceTree = "<group>"; };
 		8740533B2B7E357F007C2DC2 /* ColorsColletcionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsColletcionViewDataSource.swift; sourceTree = "<group>"; };
+		8740533F2B7E4731007C2DC2 /* GroupsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsListViewController.swift; sourceTree = "<group>"; };
+		874053422B7E47D4007C2DC2 /* GroupListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListCell.swift; sourceTree = "<group>"; };
+		874053442B7E4863007C2DC2 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		874053462B7E50A3007C2DC2 /* GroupsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsStore.swift; sourceTree = "<group>"; };
 		875B9BF42B5D4FE600DAB15B /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		876EB2FE2B5A5DF7007EE48D /* GroupFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFormViewController.swift; sourceTree = "<group>"; };
 		876EB3002B5A6E1E007EE48D /* TextField + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField + extension.swift"; sourceTree = "<group>"; };
@@ -48,6 +55,7 @@
 		87CC00F12B59281900829301 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		87CC00F32B593FF100829301 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		87CC00F62B5958C200829301 /* UINavigationController + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController + extension.swift"; sourceTree = "<group>"; };
+		87FE4B512B84E3FB001B8352 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,13 +69,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		873875492B726B2B00C5CCF5 /* Views */ = {
+		873875492B726B2B00C5CCF5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				875B9BF42B5D4FE600DAB15B /* TextField.swift */,
 				8738754A2B726B3900C5CCF5 /* Cells */,
+				875B9BF42B5D4FE600DAB15B /* TextField.swift */,
+				874053442B7E4863007C2DC2 /* Button.swift */,
 			);
-			path = Views;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		8738754A2B726B3900C5CCF5 /* Cells */ = {
@@ -76,6 +85,7 @@
 				87CC00F32B593FF100829301 /* GroupCell.swift */,
 				876EB3022B5A75A1007EE48D /* ColorCell.swift */,
 				876EB3052B5A825B007EE48D /* GeometricColorCell.swift */,
+				874053422B7E47D4007C2DC2 /* GroupListCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -83,6 +93,7 @@
 		8738754F2B7278A000C5CCF5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				874053462B7E50A3007C2DC2 /* GroupsStore.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -130,19 +141,20 @@
 			path = GroupFormViewController;
 			sourceTree = "<group>";
 		};
-		876EB3072B5AA38D007EE48D /* models */ = {
+		876EB3072B5AA38D007EE48D /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				876EB3082B5AA39F007EE48D /* Group.swift */,
-				8738754B2B72758400C5CCF5 /* CategoryGroup.swift */,
+				87FE4B512B84E3FB001B8352 /* Card.swift */,
 			);
-			path = models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		8798AB002B5D4A98006BED32 /* WordFormViewController */ = {
 			isa = PBXGroup;
 			children = (
 				8798AB012B5D4ACD006BED32 /* WordFormViewController.swift */,
+				8740533F2B7E4731007C2DC2 /* GroupsListViewController.swift */,
 			);
 			path = WordFormViewController;
 			sourceTree = "<group>";
@@ -167,8 +179,9 @@
 			isa = PBXGroup;
 			children = (
 				8738754F2B7278A000C5CCF5 /* Services */,
-				876EB3072B5AA38D007EE48D /* models */,
-				87CC00EE2B59253F00829301 /* Presentation */,
+				876EB3072B5AA38D007EE48D /* Models */,
+				873875492B726B2B00C5CCF5 /* Components */,
+				87CC00EE2B59253F00829301 /* Pages */,
 				87CC00F52B59589700829301 /* Helpers */,
 				876EB2FC2B5A589F007EE48D /* Resources */,
 				87CC00DA2B591A9400829301 /* AppDelegate.swift */,
@@ -177,17 +190,16 @@
 			path = Lexicon;
 			sourceTree = "<group>";
 		};
-		87CC00EE2B59253F00829301 /* Presentation */ = {
+		87CC00EE2B59253F00829301 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				873875492B726B2B00C5CCF5 /* Views */,
-				8798AB002B5D4A98006BED32 /* WordFormViewController */,
-				876EB2FD2B5A5DC8007EE48D /* GroupFormViewController */,
 				876EB2FA2B5A585C007EE48D /* GroupsViewController */,
 				876EB2FB2B5A5871007EE48D /* SettingsViewController */,
+				876EB2FD2B5A5DC8007EE48D /* GroupFormViewController */,
+				8798AB002B5D4A98006BED32 /* WordFormViewController */,
 				876EB2F92B5A5838007EE48D /* TabBarViewController */,
 			);
-			path = Presentation;
+			path = Pages;
 			sourceTree = "<group>";
 		};
 		87CC00F52B59589700829301 /* Helpers */ = {
@@ -274,13 +286,17 @@
 				87CC00F72B5958C200829301 /* UINavigationController + extension.swift in Sources */,
 				8740533C2B7E357F007C2DC2 /* ColorsColletcionViewDataSource.swift in Sources */,
 				875B9BF52B5D4FE600DAB15B /* TextField.swift in Sources */,
+				874053472B7E50A3007C2DC2 /* GroupsStore.swift in Sources */,
+				874053452B7E4863007C2DC2 /* Button.swift in Sources */,
 				876EB3092B5AA39F007EE48D /* Group.swift in Sources */,
 				876EB3062B5A825B007EE48D /* GeometricColorCell.swift in Sources */,
+				874053432B7E47D4007C2DC2 /* GroupListCell.swift in Sources */,
 				876EB3032B5A75A1007EE48D /* ColorCell.swift in Sources */,
-				8738754C2B72758400C5CCF5 /* CategoryGroup.swift in Sources */,
+				874053402B7E4731007C2DC2 /* GroupsListViewController.swift in Sources */,
 				87CC00F02B59259000829301 /* TabBarViewController.swift in Sources */,
 				87CC00DF2B591A9400829301 /* GroupsViewController.swift in Sources */,
 				8798AB022B5D4ACD006BED32 /* WordFormViewController.swift in Sources */,
+				87FE4B522B84E3FB001B8352 /* Card.swift in Sources */,
 				87CC00DB2B591A9400829301 /* AppDelegate.swift in Sources */,
 				87CC00F42B593FF100829301 /* GroupCell.swift in Sources */,
 				87CC00DD2B591A9400829301 /* SceneDelegate.swift in Sources */,
